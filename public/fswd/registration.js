@@ -2,6 +2,11 @@
 var angular = require('angular');
 
 angular.module('fswd.registration', [])
+  .controller('defaultTraningYear', function($scope) {
+      $scope.user = {
+        yearInTraining: 'F'
+      };
+  })
   .directive('uniqueUsername', function($http, $q) {
     return {
       restrict: 'A',

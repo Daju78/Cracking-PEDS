@@ -23,8 +23,11 @@ html
                 a(href='/users/register') Register
           else
             ul.nav.navbar-nav.navbar-right
+              if isAdmin 
+                li.nav.navbar-nav
+                  a(href='/users/admin') Configure Quesitons 
               li.nav.navbar-nav
-                a(href='/users/logout') Logout
+                a(href='/users/logout') Logout    
             p.navbar-text.navbar-right
               | Hello #{user.username}!
     .container

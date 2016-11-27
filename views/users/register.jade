@@ -7,6 +7,14 @@ block body
         label(for="username") Username
         input.form-control(type="text" name="username" ng-model="user.username" required unique-username)
         p(ng-show="registration.username.$error.uniqueUsername") Username must be unique.
+      .form-group(ng-class="{ 'has-error': registeration.firstName.$dirty && registration.firstName.$invalid }")
+        label(for="firstName") First Name
+        input.form-control(type="text" name="firstName" ng-model="user.firstName" ng-pattern="/^[A-Z]'?[- &a-zA-Z]+/")  
+        p(ng-show="registration.firstName.$error.pattern") First name is not valid.
+      .form-group(ng-class="{ 'has-error': registeration.lastName.$dirty && registration.lastName.$invalid }")
+        label(for="lastName") Last Name
+        input.form-control(type="text" name="lastName" ng-model="user.lastName" ng-pattern="/^[A-Z]'?[- &a-zA-Z]+/")  
+        p(ng-show="registration.lastName.$error.pattern") Last name is not valid.  
       .form-group(ng-class="{ 'has-error': registration.email.$dirty && registration.email.$invalid }")
         label(for="email") Email Address
         input.form-control(type="email" name="email" ng-model="user.email" required)
@@ -17,7 +25,32 @@ block body
         input.form-control(type="password" name="password" ng-model="user.password" required)
         label(for="password_confirm") Confirm Password
         input.form-control(type="password" name="password_confirm" ng-model="user.password_confirm" registration-password-match="password")
-        button.btn.btn-default(type="submit" ng-disabled="registration.$invalid") Register!
+      .form-group(ng-class="{ 'has-error': registeration.trainingProgram.$dirty && registration.trainingProgram.$invalid }")
+        label(for="trainingProgram") Training program
+        input.form-control(type="text" name="trainingProgram" ng-model="user.trainingProgram" required)  
+        //p(ng-show="registration.trainingProgram.$error.trainingProgram") Must input training program.
+      .form-radio-group(ng-controller="defaultTraningYear")
+        div(class="form-check")
+          label.form-check-label(for="dentailStudent")
+            input.form-check-input(id="dentailStudent" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="D")
+            | Dentail student  
+        div(class="form-check")
+          label.form-check-label(for="firstYear")
+            input.form-check-input(id="firstYear" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="F")
+            | First year resident
+        div(class="form-check")
+          label.form-check-label(for="secondYear")
+            input.form-check-input(id="secondYear" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="S")
+            | Second year resident 
+        div(class="form-check")
+          label.form-check-label(for="thirdYear")
+            input.form-check-input(id="thirdYear" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="T")
+            | Third year resident  
+        div(class="form-check")
+          label.form-check-label(for="finished")
+            input.form-check-input(id="finished" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="A")
+            | Already finished resident                      
+      button.btn.btn-default(type="submit" ng-disabled="registration.$invalid") Register!
 
     pre user = {{ user | json }}
     pre registration = {{ registration | json }}

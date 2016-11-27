@@ -24,7 +24,25 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true,
         notEmpty: true
       }
-    }
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      validate: {
+        is: /^[A-Z]'?[- &a-zA-Z]+/
+      }
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      validate: {
+          is: /^[A-Z]'?[- &a-zA-Z]+/
+      }
+    },
+    trainingProgram: {
+      type: DataTypes.STRING
+    },
+    yearInTraining: {
+      type: DataTypes.STRING
+    }   
   }, {
     instanceMethods: {
       isValidPassword: function(password) {
@@ -33,6 +51,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     classMethods: {
       associate: function(models) {
+        //User.hasMany(models.Result);
       }
     },
     validate: {

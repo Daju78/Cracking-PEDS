@@ -15,7 +15,7 @@ module.exports = {
           allowNull: false
         }
       ),
-      queryInterface.addColumn('Users', 'program',
+      queryInterface.addColumn('Users', 'trainingProgram',
         {
           type: Sequelize.STRING,
           allowNull: false
@@ -34,7 +34,7 @@ module.exports = {
     return [
       queryInterface.removeColumn('Users', 'firstName'),
       queryInterface.removeColumn('Users', 'lastName'),
-      queryInterface.removeColumn('Users', 'program'),
+      queryInterface.removeColumn('Users', 'trainingProgram'),
       queryInterface.removeColumn('Users', 'yearInTraining'),
     ];
   }
