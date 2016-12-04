@@ -21,7 +21,7 @@ module.exports = {
     */
     return [
       queryInterface.bulkInsert('Topics', [{
-        name: 'Cardiology & Prevention',
+        name: 'Cariology & Prevention',
         createdAt: new Date(),
         updatedAt: new Date()
       }, {

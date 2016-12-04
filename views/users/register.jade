@@ -33,23 +33,23 @@ block body
         div(class="form-check")
           label.form-check-label(for="dentailStudent")
             input.form-check-input(id="dentailStudent" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="D")
-            | Dentail student  
+            |  Dentail student  
         div(class="form-check")
           label.form-check-label(for="firstYear")
             input.form-check-input(id="firstYear" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="F")
-            | First year resident
+            |  First year resident
         div(class="form-check")
           label.form-check-label(for="secondYear")
             input.form-check-input(id="secondYear" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="S")
-            | Second year resident 
+            |  Second year resident 
         div(class="form-check")
           label.form-check-label(for="thirdYear")
             input.form-check-input(id="thirdYear" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="T")
-            | Third year resident  
+            |  Third year resident  
         div(class="form-check")
           label.form-check-label(for="finished")
             input.form-check-input(id="finished" type="radio" name="yearInTraining" ng-model="user.yearInTraining" value="A")
-            | Already finished resident                      
+            |  Already finished resident                      
       button.btn.btn-default(type="submit" ng-disabled="registration.$invalid") Register!
 
     pre user = {{ user | json }}

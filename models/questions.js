@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Question.belongsTo(models.topics, { foreignKey: 'topicId'});
+        Question.belongsTo(models.Topics, { foreignKey: 'topicId'});
       }
     }
   });
