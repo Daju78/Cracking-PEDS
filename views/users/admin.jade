@@ -20,16 +20,16 @@ block body
           label(for="description") Question Description
           input.form-control(type="text" name="description" ng-model="question.description")
         .form-group(ng-class="{ 'has-error': createQuestion.option1.$dirty}")
-          label(for="option1") Options 1
+          label(for="option1") Option 1
           input.form-control(type="text" name="option1" ng-model="question.option1")
         .form-group(ng-class="{ 'has-error': createQuestion.option2.$dirty}")
-          label(for="option2") Options 2
+          label(for="option2") Option 2
           input.form-control(type="text" name="option2" ng-model="question.option2")
         .form-group(ng-class="{ 'has-error': createQuestion.option3.$dirty}")
-          label(for="option3") Options 3
+          label(for="option3") Option 3
           input.form-control(type="text" name="option3" ng-model="question.option3") 
         .form-group(ng-class="{ 'has-error': createQuestion.option4.$dirty}")
-          label(for="option4") Options 4
+          label(for="option4") Option 4
           input.form-control(type="text" name="option4" ng-model="question.option4")  
         .form-group(ng-class="{ 'has-error': createQuestion.answer.$dirty}")
           label(for="answer" style='margin-right: 10px;') Select correct answer:
@@ -42,5 +42,5 @@ block body
           label(for="explanation") Explanation
           input.form-control(type="text" name="explanation" ng-model="question.explanation")
          button#AddQuestion.btn.btn-default(ng-click="vm.addQuestion(question, selectedTopic)") Add    
-        p answer{{question.answer}}
+        //p answer{{question.answer}}
         //p(ng-show="registration.username.$error.uniqueUsername") Username must be unique.

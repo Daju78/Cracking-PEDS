@@ -1,0 +1,24 @@
+div
+    .form-group
+        label(for="description") Question
+        input.form-control(type="text" name="description" ng-model="vm.quizList[vm.qc].description" ng-readonly="true")
+    .form-radio-group
+        div(class="form-check")
+            input.form-check-input(type="radio" name="option1" ng-model="question.answer" value="{{vm.quizList[vm.qc].option1}}" style='margin-right: 10px;')
+            |   {{vm.quizList[vm.qc].option1}}   
+        div(class="form-check")            
+            input.form-check-input(type="radio" name="option2" ng-model="question.answer" value="{{vm.quizList[vm.qc].option2}}" style='margin-right: 10px;')
+            |   {{vm.quizList[vm.qc].option2}}
+        div(class="form-check")               
+            input.form-check-input(type="radio" name="option3" ng-model="question.answer" value="{{vm.quizList[vm.qc].option3}}" style='margin-right: 10px;')
+            |   {{vm.quizList[vm.qc].option3}}
+        div(class="form-check")            
+            input.form-check-input(type="radio" name="option4" ng-mode="question.answer" valuel="{{vm.quizList[vm.qc].option4}}" style='margin-right: 10px;')
+            |   {{vm.quizList[vm.qc].option4}} 
+    .form-group
+        br
+        button#CheckAnswer.btn.btn-default(ng-click="vm.verifyAnswer(question.answer)") Submit Answer 
+        p(ng-show="vm.resultMessage!==''") {{vm.resultMessage}}
+        br
+        button#NextQuestion.btn.btn-default(ng-click="vm.nextQuestion()") Next Question 
+    

@@ -1,0 +1,10 @@
+extends ../layout.jade
+
+block body
+    div(ng-controller="QuizTopicController as vm")
+      label(for="selectTopcs") Select topic to start quiz 
+      select.form-control(ng-model="selectedTopic" ng-change="vm.selectedTopic(selectedTopic.id)" \
+      name="selectTopcs" ng-options="y.name for (x, y) in vm.topicList | orderBy:'name'")
+      br 
+      h3 Start Quiz 
+      take-quiz-component()
