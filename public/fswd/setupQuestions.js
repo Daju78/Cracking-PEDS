@@ -1,4 +1,5 @@
 var angular = require('angular');
+var _ = require('lodash');
 
 angular.module('fswd.setupQuestions', [])
     .service('QuestionsService', function($http){
@@ -64,7 +65,15 @@ angular.module('fswd.setupQuestions', [])
     })
     .controller('QuestionsController', function(QuestionsService, $scope) {
         var vm = this;
+        vm.showQuestion = false;
+
         QuestionsService.retriveTopicList('admin');
+
+        vm.changeTopic = function(item){
+            if(item){
+                vm.showQuestion = true; 
+            }
+        };
 
         vm.updateTopic = function(item) {
             //console.log('update',item);
@@ -116,7 +125,7 @@ angular.module('fswd.setupQuestions', [])
         vm.quizList = [];
         vm.result = '';
         vm.resultMessage = '';
-
+        vm.numList = []; 
         vm.verifyAnswer = function(answer){
             //console.log("answer", answer);
             if(answer === vm.quizList[vm.qc].answer){
@@ -129,12 +138,12 @@ angular.module('fswd.setupQuestions', [])
         };
 
         vm.nextQuestion = function(){
-            if (vm.qc + 1 <= vm.quizList.length){
+            if (vm.qc + 1 < vm.quizList.length){
                 vm.qc ++;   
             }else {
                 vm.qc = 0;
             }
-            console.log('count', vm.qc)
+            console.log('count', vm.qc);
             vm.result = '';
             vm.resultMessage = ''; 
         };
@@ -147,7 +156,9 @@ angular.module('fswd.setupQuestions', [])
                 vm.obj = JSON.parse(JSON.stringify(vm.topicWithQuesiton));
                 //console.log(vm.obj.questions);
                 vm.quizList = vm.obj.questions;
-                //console.log(vm.quizList);
+                //assign random question index
+                vm.numList = _.shuffle(_.range(vm.quizList.length));
+                //console.log(vm.numList);
             }
         });
     })

@@ -8,39 +8,41 @@ block body
   div(ng-controller="QuestionsController as vm")
     .form-group
       label(for="selectTopcs") Select Topic
-      select.form-control(ng-model="selectedTopic" name="selectTopcs" ng-options="y.name for (x, y) in vm.topicList | orderBy:'name'")
+      select.form-control(ng-model="selectedTopic" name="selectTopcs" ng-change="vm.changeTopic(selectedTopic)" ng-options="y.name for (x, y) in vm.topicList | orderBy:'name'")
       br  
       input.form-control(type="text" ng-model="selectedTopic.name")  
       button#Update.btn.btn-default(type="button" ng-click="vm.updateTopic(selectedTopic)" style='margin-right: 10px;') Update
       button#Add.btn.btn-default(type="button" ng-click="vm.addTopic(selectedTopic.name)" style='margin-right: 10px;') Add
       button#Delete.btn.btn-default(type="button" ng-click="vm.deleteTopic(selectedTopic)" style='margin-right: 10px;') Delete
-      p {{selectedTopic}}
+      //p {{selectedTopic}} {{vm.showQuestion}}
       div
-        .form-group(ng-class="{ 'has-error': createQuestion.description.$dirty}")
-          label(for="description") Question Description
-          input.form-control(type="text" name="description" ng-model="question.description")
-        .form-group(ng-class="{ 'has-error': createQuestion.option1.$dirty}")
-          label(for="option1") Option 1
-          input.form-control(type="text" name="option1" ng-model="question.option1")
-        .form-group(ng-class="{ 'has-error': createQuestion.option2.$dirty}")
-          label(for="option2") Option 2
-          input.form-control(type="text" name="option2" ng-model="question.option2")
-        .form-group(ng-class="{ 'has-error': createQuestion.option3.$dirty}")
-          label(for="option3") Option 3
-          input.form-control(type="text" name="option3" ng-model="question.option3") 
-        .form-group(ng-class="{ 'has-error': createQuestion.option4.$dirty}")
-          label(for="option4") Option 4
-          input.form-control(type="text" name="option4" ng-model="question.option4")  
-        .form-group(ng-class="{ 'has-error': createQuestion.answer.$dirty}")
-          label(for="answer" style='margin-right: 10px;') Select correct answer:
-          select.from-control(ng-model="question.answer" name="answer")
-            option(value="{{question.option1}}") option 1
-            option(value="{{question.option2}}") option 2
-            option(value="{{question.option3}}") option 3
-            option(value="{{question.option4}}") option 4
-        .form-group(ng-class="{ 'has-error': createQuestion.explanation.$dirty}")
-          label(for="explanation") Explanation
-          input.form-control(type="text" name="explanation" ng-model="question.explanation")
-         button#AddQuestion.btn.btn-default(ng-click="vm.addQuestion(question, selectedTopic)") Add    
+        form(name="addQuestion" ng-hide="vm.showQuestion == false" novalidate)
+          .form-group(ng-class="{ 'has-error': createQuestion.description.$dirty}")
+            label(for="description") Question Description
+            input.form-control(type="text" name="description" ng-model="question.description" required)
+          .form-group(ng-class="{ 'has-error': createQuestion.option1.$dirty}")
+            label(for="option1") Option 1
+            input.form-control(type="text" name="option1" ng-model="question.option1" required)
+          .form-group(ng-class="{ 'has-error': createQuestion.option2.$dirty}")
+            label(for="option2") Option 2
+            input.form-control(type="text" name="option2" ng-model="question.option2" required)
+          .form-group(ng-class="{ 'has-error': createQuestion.option3.$dirty}")
+            label(for="option3") Option 3
+            input.form-control(type="text" name="option3" ng-model="question.option3" required) 
+          .form-group(ng-class="{ 'has-error': createQuestion.option4.$dirty}")
+            label(for="option4") Option 4
+            input.form-control(type="text" name="option4" ng-model="question.option4" required)  
+          .form-group(ng-class="{ 'has-error': createQuestion.answer.$dirty}")
+            label(for="answer" style='margin-right: 10px;') Select correct answer:
+            select.from-control(ng-model="question.answer" name="answer" required)
+              option(value="{{question.option1}}") option 1
+              option(value="{{question.option2}}") option 2
+              option(value="{{question.option3}}") option 3
+              option(value="{{question.option4}}") option 4
+          .form-group(ng-class="{ 'has-error': createQuestion.explanation.$dirty}")
+            label(for="explanation") Explanation
+            input.form-control(type="text" name="explanation" ng-model="question.explanation")
+          button#AddQuestion.btn.btn-default(ng-click="vm.addQuestion(question, selectedTopic); question= {}" ng-disabled="addQuestion.$invalid") Add    
+          //p {{selectedTopic}}
         //p answer{{question.answer}}
-        //p(ng-show="registration.username.$error.uniqueUsername") Username must be unique.
+       

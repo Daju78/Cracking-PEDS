@@ -1,7 +1,7 @@
 div
     .form-group
         label(for="description") Question
-        input.form-control(type="text" name="description" ng-model="vm.quizList[vm.qc].description" ng-readonly="true")
+        input.form-control(type="text" name="description" ng-model="vm.quizList[vm.numList[vm.qc]].description" ng-readonly="true")
     .form-radio-group
         div(class="form-check")
             input.form-check-input(type="radio" name="option1" ng-model="question.answer" value="{{vm.quizList[vm.qc].option1}}" style='margin-right: 10px;')
